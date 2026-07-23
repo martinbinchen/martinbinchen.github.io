@@ -297,13 +297,76 @@
             text-decoration: none;
         }
 
-        .content-grid {
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .article-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s;
+        }
+
+        .article-card:hover {
+            border-color: rgba(34, 211, 238, 0.2);
+            background: var(--bg-hover);
+        }
+
+        .article-info {
+            flex: 1;
+        }
+
+        .article-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .article-date {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .article-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .article-img-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            flex-shrink: 0;
+        }
+
+        .video-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
         }
 
-        .content-card {
+        .video-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -313,44 +376,40 @@
             transition: all 0.25s;
         }
 
-        .content-card:hover {
+        .video-card:hover {
             border-color: rgba(34, 211, 238, 0.2);
             background: var(--bg-hover);
             transform: translateY(-2px);
         }
 
-        .content-thumb {
+        .video-thumb {
             height: 120px;
+            background: linear-gradient(135deg, #1a2332, #0d1b2a);
             position: relative;
             display: flex;
+            justify-content: space-between;
             align-items: flex-end;
-            padding: 12px;
+            padding: 10px;
         }
 
-        .content-badge {
+        .video-duration {
             font-size: 0.7rem;
-            font-weight: 500;
-            padding: 3px 8px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2px 6px;
             border-radius: 4px;
-            background: rgba(0, 0, 0, 0.6);
-            color: var(--text);
-            backdrop-filter: blur(4px);
+            color: #fff;
         }
 
-        .content-info {
-            padding: 14px;
+        .video-plays {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        .content-title {
-            font-size: 0.88rem;
+        .video-title {
+            padding: 12px;
+            font-size: 0.85rem;
             font-weight: 500;
-            margin-bottom: 6px;
             line-height: 1.4;
-        }
-
-        .content-date {
-            font-size: 0.75rem;
-            color: var(--text-dim);
         }
 
         @media (max-width: 640px) {
@@ -359,7 +418,7 @@
             .avatar { width: 160px; height: 160px; border-radius: 50%; }
             .tags { justify-content: center; }
             .grid-2 { grid-template-columns: 1fr; }
-            .content-grid { grid-template-columns: 1fr; }
+            .video-grid { grid-template-columns: 1fr; }
             .container { padding: 48px 20px; }
         }
     </style>
@@ -392,82 +451,70 @@
         </header>
 
         <section>
-            <h2>Latest Content</h2>
-            <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 20px;">
-                公众号「码钉日记」· 视频号「Martin陈滨」· 持续更新
-            </p>
-            <div class="content-grid">
-                <a href="https://mp.weixin.qq.com/s/GtG-sDeHK6gr5XQS74wcSg" class="content-card" target="_blank">
-                    <div class="content-thumb" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
-                        <span class="content-badge">公众号</span>
+            <h2>公众号「码钉日记」</h2>
+            <div class="article-list">
+                <a href="https://mp.weixin.qq.com/s/GtG-sDeHK6gr5XQS74wcSg" class="article-card" target="_blank">
+                    <div class="article-info">
+                        <div class="article-title">百亿眼贴红海里，我们用固态氢给眼睛写了一封情书</div>
+                        <div class="article-excerpt">从材料科学到商业突围，为什么氢气眼贴值得合作伙伴认真看一眼</div>
+                        <div class="article-date">星期二</div>
                     </div>
-                    <div class="content-info">
-                        <div class="content-title">百亿眼贴红海里，我们用固态氢给眼睛写了一封情书</div>
-                        <div class="content-date">星期二</div>
-                    </div>
+                    <img src="https://mmbiz.qpic.cn/mmbiz_jpg/zicf4q7icBACxS4O2Lx62ibaxYmf8Zic0b7zDNcYGmpVtFMHZShurXyP20WNIvB2iaibDfR3m4ymTuVWKYtaq5FJP1syLZTCsgb2GWZvYVvouMzPY/0?wx_fmt=jpeg" alt="" class="article-img">
                 </a>
-                <a href="#" class="content-card" target="_blank">
-                    <div class="content-thumb" style="background: linear-gradient(135deg, #0f3460, #16213e);">
-                        <span class="content-badge">公众号</span>
+                <a href="#" class="article-card" target="_blank">
+                    <div class="article-info">
+                        <div class="article-title">年轻人的新中式养生来到了分子级—泡脚 OUT，足底贴氢 IN</div>
+                        <div class="article-date">星期一</div>
                     </div>
-                    <div class="content-info">
-                        <div class="content-title">年轻人的新中式养生来到了分子级—泡脚 OUT，足底贴氢 IN</div>
-                        <div class="content-date">星期一</div>
-                    </div>
+                    <div class="article-img-placeholder"></div>
                 </a>
-                <a href="#" class="content-card" target="_blank">
-                    <div class="content-thumb" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
-                        <span class="content-badge">公众号</span>
+                <a href="#" class="article-card" target="_blank">
+                    <div class="article-info">
+                        <div class="article-title">第十二届氢生物医学大会｜木齐科技应邀出席</div>
+                        <div class="article-date">星期日</div>
                     </div>
-                    <div class="content-info">
-                        <div class="content-title">第十二届氢生物医学大会｜木齐科技应邀出席</div>
-                        <div class="content-date">星期日</div>
-                    </div>
+                    <div class="article-img-placeholder"></div>
                 </a>
-                <a href="#" class="content-card" target="_blank">
-                    <div class="content-thumb" style="background: linear-gradient(135deg, #0f3460, #16213e);">
-                        <span class="content-badge">公众号</span>
+                <a href="#" class="article-card" target="_blank">
+                    <div class="article-info">
+                        <div class="article-title">遇湿释氢：富氢芯片，看材料科技如何走进卫生用品</div>
+                        <div class="article-date">星期五</div>
                     </div>
-                    <div class="content-info">
-                        <div class="content-title">遇湿释氢：富氢芯片，看材料科技如何走进卫生用品</div>
-                        <div class="content-date">星期五</div>
-                    </div>
+                    <div class="article-img-placeholder"></div>
                 </a>
-                <a href="#" class="content-card" target="_blank">
-                    <div class="content-thumb" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
-                        <span class="content-badge">公众号</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>视频号「Martin陈滨」</h2>
+            <div class="video-grid">
+                <a href="https://weixin.qq.com/sph/A5mN0WHcoB" class="video-card" target="_blank">
+                    <div class="video-thumb">
+                        <span class="video-duration">00:56</span>
+                        <span class="video-plays">▶ 128</span>
                     </div>
-                    <div class="content-info">
-                        <div class="content-title">氢浴球：给泡浴加一层「科技底」</div>
-                        <div class="content-date">7月14日</div>
-                    </div>
+                    <div class="video-title">MUQI 氢气眼贴：把'停顿'设计成一种仪式</div>
                 </a>
-                <a href="#" class="content-card" target="_blank">
-                    <div class="content-thumb" style="background: linear-gradient(135deg, #0f3460, #16213e);">
-                        <span class="content-badge">公众号</span>
+                <a href="#" class="video-card" target="_blank">
+                    <div class="video-thumb">
+                        <span class="video-duration">00:59</span>
+                        <span class="video-plays">▶ 214</span>
                     </div>
-                    <div class="content-info">
-                        <div class="content-title">固态氢×敷贴：一道工序的轻量升级</div>
-                        <div class="content-date">7月13日</div>
-                    </div>
+                    <div class="video-title">木齐科技把固态氢装进敷贴夹层</div>
                 </a>
-                <a href="https://weixin.qq.com/sph/A5mN0WHcoB" class="content-card" target="_blank">
-                    <div class="content-thumb" style="background: linear-gradient(135deg, #1a2332, #0d1b2a);">
-                        <span class="content-badge">视频号</span>
+                <a href="#" class="video-card" target="_blank">
+                    <div class="video-thumb">
+                        <span class="video-duration">01:22</span>
+                        <span class="video-plays">▶ 206</span>
                     </div>
-                    <div class="content-info">
-                        <div class="content-title">MUQI 氢气眼贴：把'停顿'设计成一种仪式</div>
-                        <div class="content-date">00:56 · 128 views</div>
-                    </div>
+                    <div class="video-title">每家敷贴厂都在卷价格，木齐科技用一片膜破局</div>
                 </a>
-                <a href="#" class="content-card" target="_blank">
-                    <div class="content-thumb" style="background: linear-gradient(135deg, #1a2332, #0d1b2a);">
-                        <span class="content-badge">视频号</span>
+                <a href="#" class="video-card" target="_blank">
+                    <div class="video-thumb">
+                        <span class="video-duration">01:49</span>
+                        <span class="video-plays">▶ 228</span>
                     </div>
-                    <div class="content-info">
-                        <div class="content-title">木齐科技把固态氢装进敷贴夹层</div>
-                        <div class="content-date">00:59 · 214 views</div>
-                    </div>
+                    <div class="video-title">一片卫生巾里，藏着一颗遇湿释氢的芯片</div>
                 </a>
             </div>
         </section>
@@ -497,7 +544,7 @@
         <section>
             <h2>Current Roles</h2>
             <div class="card">
-                <div class="card-title">CEO — MQ Tech (木齐健康科技)</div>
+                <div class="card-title">CEO — MQ Tech</div>
                 <div class="card-sub">2021 — Present · Hydrogen Health & Solid-State Storage</div>
                 <div class="card-desc">
                     National High-Tech Enterprise. Solid-state hydrogen materials, hydrogen skincare, and consumer health products.
@@ -506,7 +553,7 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-title">International Business Director CMD — Hongrun (宏润空压机)</div>
+                <div class="card-title">International Business Director CMD — Hongrun</div>
                 <div class="card-sub">2025 — Present · Medical Air Compressors & Gas Systems</div>
                 <div class="card-desc">
                     Industry "hidden champion" since 1995. Deployed end-to-end AI-Agent foreign trade automation —
