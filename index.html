@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martin Chen — 陈滨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-hover: #1a1a25;
+            --border: #1e1e2e;
+            --text: #e4e4e7;
+            --text-dim: #71717a;
+            --accent: #22d3ee;
+            --accent2: #a78bfa;
+            --accent3: #34d399;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.08;
+            pointer-events: none;
+            top: -200px;
+            right: -100px;
+            background: var(--accent);
+        }
+
+        .glow2 {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.05;
+            pointer-events: none;
+            bottom: -200px;
+            left: -100px;
+            background: var(--accent2);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            margin-bottom: 64px;
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--text), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .tagline strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        section {
+            margin-bottom: 56px;
+        }
+
+        h2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 12px;
+            transition: all 0.25s;
+        }
+
+        .card:hover {
+            border-color: rgba(34, 211, 238, 0.2);
+            background: var(--bg-hover);
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .card-sub {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .milestone {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .milestone:last-child {
+            border-bottom: none;
+        }
+
+        .milestone-year {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            min-width: 48px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .milestone-text {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: all 0.2s;
+        }
+
+        .link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--bg-hover);
+        }
+
+        .link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 640px) {
+            .name { font-size: 2.2rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .container { padding: 48px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    <div class="glow"></div>
+    <div class="glow2"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="name">Martin Chen</h1>
+            <p class="subtitle">陈滨 — CEO, MQ Tech · Tsinghua MBA</p>
+            <p class="tagline">
+                <strong>20 years</strong> in cross-border trade & medical devices.
+                <strong>Hydrogen health</strong> pioneer. <strong>AIGC</strong> practitioner building automation for real industries.
+                Patented inventor. Resource connector.
+            </p>
+            <div class="tags">
+                <span class="tag">Hydrogen Tech</span>
+                <span class="tag">Medical Devices</span>
+                <span class="tag">AIGC</span>
+                <span class="tag">Cross-border Trade</span>
+                <span class="tag">Tsinghua MBA</span>
+                <span class="tag">AI Agent</span>
+            </div>
+        </header>
+
+        <section>
+            <h2>At a Glance</h2>
+            <div class="grid-2">
+                <div class="stat-card">
+                    <div class="stat-num">20+</div>
+                    <div class="stat-label">Years in Trade & Industry</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">37</div>
+                    <div class="stat-label">Patents (15 Invention)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">10x</div>
+                    <div class="stat-label">Prospecting Efficiency via AI</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">159</div>
+                    <div class="stat-label">Tiered Client Portfolio</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Current Roles</h2>
+            <div class="card">
+                <div class="card-title">CEO — MQ Tech (木齐健康科技)</div>
+                <div class="card-sub">2021 — Present · Hydrogen Health & Solid-State Storage</div>
+                <div class="card-desc">
+                    National High-Tech Enterprise. Solid-state hydrogen materials, hydrogen skincare, and consumer health products.
+                    Designed AI-powered prospecting system with semantic vector search, quantified client scoring (CF+CV+CT model),
+                    achieving 10x efficiency improvement across global markets.
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">International Business Director CMD — Hongrun (宏润空压机)</div>
+                <div class="card-sub">2025 — Present · Medical Air Compressors & Gas Systems</div>
+                <div class="card-desc">
+                    Industry "hidden champion" since 1995. Deployed end-to-end AI-Agent foreign trade automation —
+                    12-rule email compliance system, 6-dimensional cross-verified client research (3h → 10min),
+                    automated commission calculation, Python-based network solutions.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="card">
+                <div class="card-title">Tsinghua University — MBA</div>
+                <div class="card-sub">School of Economics and Management · 2013–2016</div>
+            </div>
+            <div class="card">
+                <div class="card-title">University of Richmond — Visiting Scholar</div>
+                <div class="card-sub">Robins School of Business · J-1 Visa · Tsinghua Sponsored · 2015–2016</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Shandong University — B.Sc. Biology</div>
+                <div class="card-sub">Marine College · Weihai Campus · 2000–2004</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Key Milestones</h2>
+            <div class="card" style="padding: 16px 24px;">
+                <div class="milestone">
+                    <span class="milestone-year">2004</span>
+                    <span class="milestone-text">Shandong University graduate. Began 20-year trade career.</span>
+                </div>
+                <div class="milestone">
+                    <span class="milestone-year">2010</span>
+                    <span class="milestone-text">Promoted to International Trade Manager at 25. Team revenue ¥30M.</span>
+                </div>
+                <div class="milestone">
+                    <span class="milestone-year">2013</span>
+                    <span class="milestone-text">Admitted to Tsinghua EMBA, School of Economics & Management.</span>
+                </div>
+                <div class="milestone">
+                    <span class="milestone-year">2016</span>
+                    <span class="milestone-text">Partner at Daokou Investment. Published on 36Kr. He Jun Academy.</span>
+                </div>
+                <div class="milestone">
+                    <span class="milestone-year">2021</span>
+                    <span class="milestone-text">Appointed CEO of MQ Tech. Launched "Hydrogen+ PLUS" model.</span>
+                </div>
+                <div class="milestone">
+                    <span class="milestone-year">2024</span>
+                    <span class="milestone-text">Keynote at Shandong University. 10th National Hydrogen Biomedical Conference.</span>
+                </div>
+                <div class="milestone">
+                    <span class="milestone-year">2026</span>
+                    <span class="milestone-text">National Hydrogen Medical Committee member. National standards committee. Based in San Francisco.</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Connect</h2>
+            <div class="links">
+                <a href="https://www.linkedin.com/in/martin-bin-chen" class="link" target="_blank">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://x.com/MARTINPARK111" class="link" target="_blank">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    X / Twitter
+                </a>
+                <a href="https://www.emuqi.com" class="link" target="_blank">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    emuqi.com
+                </a>
+                <a href="https://github.com/martinbinchen" class="link" target="_blank">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Martin Chen · Built with purpose, not decoration.</p>
+        </footer>
+    </div>
+</body>
+</html>
