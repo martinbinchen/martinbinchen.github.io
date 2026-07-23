@@ -80,16 +80,24 @@
 
         header {
             margin-bottom: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .header-text {
+            flex: 1;
         }
 
         .avatar {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            border-radius: 16px;
             object-fit: cover;
-            border: 2px solid rgba(34, 211, 238, 0.15);
+            border: 2px solid rgba(34, 211, 238, 0.12);
             box-shadow: 0 0 40px rgba(34, 211, 238, 0.08), 0 0 80px rgba(167, 139, 250, 0.05);
-            margin-bottom: 28px;
+            flex-shrink: 0;
             filter: brightness(0.95) contrast(1.05);
         }
 
@@ -289,7 +297,10 @@
         }
 
         @media (max-width: 640px) {
+            header { flex-direction: column-reverse; align-items: center; text-align: center; }
             .name { font-size: 2.2rem; }
+            .avatar { width: 140px; height: 140px; }
+            .tags { justify-content: center; }
             .grid-2 { grid-template-columns: 1fr; }
             .container { padding: 48px 20px; }
         }
@@ -302,8 +313,8 @@
 
     <div class="container">
         <header>
-            <img src="avatar.jpg" alt="Martin Chen" class="avatar">
-            <h1 class="name">Martin Chen</h1>
+            <div class="header-text">
+                <h1 class="name">Martin Chen</h1>
             <p class="subtitle">陈滨 — CEO, MQ Tech · Tsinghua MBA</p>
             <p class="tagline">
                 <strong>20 years</strong> in cross-border trade & medical devices.
@@ -318,6 +329,8 @@
                 <span class="tag">Tsinghua MBA</span>
                 <span class="tag">AI Agent</span>
             </div>
+            </div>
+            <img src="avatar.jpg" alt="Martin Chen" class="avatar">
         </header>
 
         <section>
