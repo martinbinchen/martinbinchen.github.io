@@ -93,8 +93,9 @@
         .avatar {
             width: 180px;
             height: 180px;
-            border-radius: 16px;
+            border-radius: 50%;
             object-fit: cover;
+            object-position: center 20%;
             border: 2px solid rgba(34, 211, 238, 0.12);
             box-shadow: 0 0 40px rgba(34, 211, 238, 0.08), 0 0 80px rgba(167, 139, 250, 0.05);
             flex-shrink: 0;
@@ -355,7 +356,7 @@
         @media (max-width: 640px) {
             header { flex-direction: column-reverse; align-items: center; text-align: center; }
             .name { font-size: 2.2rem; }
-            .avatar { width: 140px; height: 140px; }
+            .avatar { width: 140px; height: 140px; border-radius: 50%; }
             .tags { justify-content: center; }
             .grid-2 { grid-template-columns: 1fr; }
             .content-grid { grid-template-columns: 1fr; }
