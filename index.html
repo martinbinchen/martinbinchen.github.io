@@ -82,6 +82,17 @@
             margin-bottom: 64px;
         }
 
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(34, 211, 238, 0.15);
+            box-shadow: 0 0 40px rgba(34, 211, 238, 0.08), 0 0 80px rgba(167, 139, 250, 0.05);
+            margin-bottom: 28px;
+            filter: brightness(0.95) contrast(1.05);
+        }
+
         .name {
             font-size: 3rem;
             font-weight: 700;
@@ -291,6 +302,7 @@
 
     <div class="container">
         <header>
+            <img src="avatar.jpg" alt="Martin Chen" class="avatar">
             <h1 class="name">Martin Chen</h1>
             <p class="subtitle">陈滨 — CEO, MQ Tech · Tsinghua MBA</p>
             <p class="tagline">
