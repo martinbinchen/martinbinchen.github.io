@@ -296,12 +296,69 @@
             text-decoration: none;
         }
 
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s;
+        }
+
+        .content-card:hover {
+            border-color: rgba(34, 211, 238, 0.2);
+            background: var(--bg-hover);
+            transform: translateY(-2px);
+        }
+
+        .content-thumb {
+            height: 120px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 12px;
+        }
+
+        .content-badge {
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.6);
+            color: var(--text);
+            backdrop-filter: blur(4px);
+        }
+
+        .content-info {
+            padding: 14px;
+        }
+
+        .content-title {
+            font-size: 0.88rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .content-date {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
         @media (max-width: 640px) {
             header { flex-direction: column-reverse; align-items: center; text-align: center; }
             .name { font-size: 2.2rem; }
             .avatar { width: 140px; height: 140px; }
             .tags { justify-content: center; }
             .grid-2 { grid-template-columns: 1fr; }
+            .content-grid { grid-template-columns: 1fr; }
             .container { padding: 48px 20px; }
         }
     </style>
@@ -424,6 +481,51 @@
                     <span class="milestone-year">2026</span>
                     <span class="milestone-text">National Hydrogen Medical Committee member. National standards committee. Based in San Francisco.</span>
                 </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Latest Content</h2>
+            <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 20px;">
+                公众号「木齐健康科技」· 视频号 · 持续更新
+            </p>
+            <div class="content-grid">
+                <a href="#" class="content-card" target="_blank">
+                    <div class="content-thumb" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
+                        <span class="content-badge">公众号</span>
+                    </div>
+                    <div class="content-info">
+                        <div class="content-title">文章标题占位</div>
+                        <div class="content-date">发布日期</div>
+                    </div>
+                </a>
+                <a href="#" class="content-card" target="_blank">
+                    <div class="content-thumb" style="background: linear-gradient(135deg, #0f3460, #16213e);">
+                        <span class="content-badge">视频号</span>
+                    </div>
+                    <div class="content-info">
+                        <div class="content-title">视频标题占位</div>
+                        <div class="content-date">发布日期</div>
+                    </div>
+                </a>
+                <a href="#" class="content-card" target="_blank">
+                    <div class="content-thumb" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
+                        <span class="content-badge">公众号</span>
+                    </div>
+                    <div class="content-info">
+                        <div class="content-title">文章标题占位</div>
+                        <div class="content-date">发布日期</div>
+                    </div>
+                </a>
+                <a href="#" class="content-card" target="_blank">
+                    <div class="content-thumb" style="background: linear-gradient(135deg, #0f3460, #16213e);">
+                        <span class="content-badge">视频号</span>
+                    </div>
+                    <div class="content-info">
+                        <div class="content-title">视频标题占位</div>
+                        <div class="content-date">发布日期</div>
+                    </div>
+                </a>
             </div>
         </section>
 
